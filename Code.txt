@@ -1,0 +1,21 @@
+file.choose(new = FALSE)
+library(ggplot2)
+q <-read.csv("D:\\PS\\CASE STUDY\\IMDB_2280_Most_Voted_Movies.csv")
+q
+
+#===================================================
+z = q$rating[0:101]
+
+# Linear Regration
+
+#===================================================
+
+
+
+plotting <-ggplot(q,aes(x = rating,y=votes))+geom_point(shape = 19)
+plotting # Scatter Plot Showing
+#plotting+geom_line()# guassian regration
+plotting+geom_point() + stat_smooth(method=lm, level=0.1)# Smothing the line
+linearMod <- lm(votes ~ votes, data=q)  # build linear regression model on full data
+print(linearMod)
+summary(linearMod) 
